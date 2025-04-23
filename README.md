@@ -23,14 +23,21 @@ uv venv
 uv pip install -r requirements.txt
 ```
 
-## Step 2a: Install Ollama & Pull LLM Model - MAC/Linux
+## Step 2a: Install Ollama & Pull LLM Model - MAC
+```bash
+brew install ollama
+ollama serve
+ollama pull llama3:8b
+```
+
+## Step 2b: Install Ollama & Pull LLM Model - Linux
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ollama serve
 ollama pull llama3:8b
 ```
 
-## Step 2b: Install Ollama & Pull LLM Model - Windows
+## Step 2c: Install Ollama & Pull LLM Model - Windows
 #### Download Ollama [HERE](https://ollama.com/download/windows)
 ```bash
 ollama serve
