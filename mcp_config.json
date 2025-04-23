@@ -1,0 +1,88 @@
+{
+    "llm": "ollama/llama3:8b",
+    "mcpServers": {
+        "MalwareBazaar": {
+            "description": "Malware Bazaar MCP Server",
+            "keywords": [
+                "sha256",
+                "malware",
+                "bazaar",
+                "tactic",
+                "exe",
+                "file",
+                "threat"
+            ],
+            "format_hex_keys": false,
+            "address_keys": [],
+            "command": "~/.local/bin/uv",
+            "args": [
+                "run",
+                "malwarebazaar_mcp.py"
+            ],
+            "cwd": "~/Documents/MalwareBazaar_MCP",
+            "instructions": [
+                "📛 Never output anything but a JSON object in this format:",
+                "{ \"name\": \"<tool_name>\", \"arguments\": { ... } }",
+                "✅ Only include exactly two keys: 'name' and 'arguments'.",
+                "❌ Do not add any other explanation, markdown, or text.",
+                "Example: { \"name\": \"get_info\", \"arguments\": { \"sha256\": \"...\" } }",
+                "",
+                "Available Tools:",
+                " - get_recent(selector: str = \"time\"): Get up to 10 most recent samples from MalwareBazaar.",
+                " - get_info(selector: str = \"\", sha256: str = \"\"), Get detailed metadata about a specific malware sample from MalwareBazaar.",
+                " - get_file(sha256: str): Download the ZIP archive of a malware sample given its SHA256 hash.",
+                " - get_taginfo(tag: str, limit: int = 100): Query MalwareBazaar for samples associated with a specific tag.",
+                "",
+                "Usage Guidelines:",
+                " - Do not respond unless a tool is used. Never summarize or guess output."
+            ]
+        },
+        "binja-lattice-mcp": {
+            "description": "Binary Ninja MCP Server",
+            "keywords": [
+                "binary ninja",
+                "xref",
+                "pseudocode",
+                "disassembly",
+                "rename",
+                "function"
+            ],
+            "format_hex_keys": true,
+            "address_keys": [
+                "start",
+                "end",
+                "entry_point"
+            ],
+            "command": "~/.local/bin/uv",
+            "args": [
+                "run",
+                "mcp_server.py"
+            ],
+            "cwd": "~/Documents/binja-lattice-mcp",
+            "env": {
+                "BNJLAT": "55a0ced4d4f461d76314627208f673db"
+            },
+            "instructions": [
+                "📛 Never output anything but a JSON object in this format:",
+                "{ \"name\": \"<tool_name>\", \"arguments\": { ... } }",
+                "✅ Only include exactly two keys: 'name' and 'arguments'.",
+                "❌ Do not add any other explanation, markdown, or text.",
+                "Example: { \"name\": \"get_function_disassembly\", \"arguments\": { \"name\": \"_main\" } }",
+                "",
+                "Available Tools:",
+                " - get_all_function_names(): Get all function names.",
+                " - get_binary_info(): Get information about the binary being analyzed.",
+                " - update_function_name(name: str, new_name: str): Update the name of a function.",
+                " - add_comment_to_address(address: int, comment: str): Add a comment to an address.",
+                " - add_comment_to_function(name: str, comment: str): Add a comment to a function with specified function name.",
+                " - get_function_disassembly(name: str): Get disassembly for the function.",
+                " - get_function_pseudocode(name: str): Get pseudocode for the function.",
+                " - get_function_variables(name: str): Get variables for the function.",
+                " - get_cross_references_to_function(name: str): Get cross references to the specified function with function name.",
+                "",
+                "Usage Guidelines:",
+                " - Do not respond unless a tool is used. Never summarize or guess output."
+            ]
+        }
+    }
+}
