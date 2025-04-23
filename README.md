@@ -44,17 +44,38 @@ ollama serve
 ollama pull llama3:8b
 ```
 
-## Step 3: Run Ollama
+## Step 3a: Clone MCP Servers - MAC/Linux
+```bash
+cd ~/Documents
+git clone https://github.com/mytechnotalent/MalwareBazaar_MCP.git
+git clone https://github.com/Invoke-RE/binja-lattice-mcp
+```
+
+## Step 3b: Clone MCP Servers - Windows
+```bash
+cd "$HOME\Documents"
+git clone https://github.com/mytechnotalent/MalwareBazaar_MCP.git
+git clone https://github.com/Invoke-RE/binja-lattice-mcp
+```
+
+## Step 4: Run Ollama
 ```bash
 ollama serve
 ```
 
-## Step 4: Run MCP Client
+## Step 5a: Run MCP Client - MAC/Linux
 ```bash
+export BNJLAT = "<your-binja-api-token>"
 uv run local_mcp_client.py
 ```
 
-## Step 5: Run Tests
+## Step 5b: Run MCP Client - Windows
+```bash
+$env:BNJLAT = "<your-binja-api-token>"
+uv run local_mcp_client.py
+```
+
+## Step 6: Run Tests
 ```
 python -m unittest discover -s tests
 
