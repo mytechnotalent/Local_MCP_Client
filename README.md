@@ -23,12 +23,31 @@ uv venv
 uv pip install -r requirements.txt
 ```
 
-## Step 2: Run MCP Client
+## Step 2a: Install Ollama & Pull LLM Model - MAC/Linux
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+ollama serve
+ollama pull llama3:8b
+```
+
+## Step 2b: Install Ollama & Pull LLM Model - Windows
+#### Download Ollama [HERE](https://ollama.com/download/windows)
+```bash
+ollama serve
+ollama pull llama3:8b
+```
+
+## Step 3: Run Ollama
+```bash
+ollama serve
+```
+
+## Step 4: Run MCP Client
 ```bash
 uv run local_mcp_client.py
 ```
 
-## Step 2: Run Tests
+## Step 5: Run Tests
 ```
 python -m unittest discover -s tests
 
